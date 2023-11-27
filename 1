@@ -1,56 +1,22 @@
-function generateRandomArray(length, minValue, maxValue) {
-    let randomArray = [];
-    for (let i = 0; i < length; i++) {
-        let randomNumber = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
-        randomArray.push(randomNumber);
+function factorial (a){
+    if (a <= 1){
+
+        return 1
     }
-    return randomArray.sort((a, b) => a - b);
+    return a * factorial (a-1)
 }
+const result1 = factorial(6)
+console.log ({result1})
 
-function binarySearch(arr, target) {
-    let left = 0;
-    let right = arr.length - 1;
 
-    while (left <= right) {
-        let mid = Math.floor((left + right) / 2);
-
-        if (arr[mid] === target) {
-            return mid;
-        } else if (arr[mid] < target) {
-            left = mid + 1;
-        } else {
-            right = mid - 1;
-        }
+function fibonaci (a)
+{
+    if (a <=1)
+    { 
+        return a
     }
-
-    return -1;
+    
+    return fibonaci (a-1) + fibonaci(a-2)
 }
-
-let arrayLength = prompt("Введіть довжину масиву:");
-let minValue = prompt("Введіть мінімальне значення для масиву:");
-let maxValue = prompt("Введіть максимальне значення для масиву:");
-
-arrayLength = parseInt(arrayLength);
-minValue = parseInt(minValue);
-maxValue = parseInt(maxValue);
-
-if (isNaN(arrayLength) || isNaN(minValue) || isNaN(maxValue) || arrayLength <= 0 || minValue >= maxValue) {
-    console.log("Будь ласка, введіть коректні значення.");
-} else {
-    let randomArray = generateRandomArray(arrayLength, minValue, maxValue);
-    console.log("Випадковий відсортований масив:", randomArray);
-
-    let targetNumber = prompt("Введіть число для пошуку:");
-    targetNumber = parseInt(targetNumber);
-
-    if (isNaN(targetNumber)) {
-        console.log("Будь ласка, введіть коректне число для пошуку.");
-    } else {
-        let searchResult = binarySearch(randomArray, targetNumber);
-        if (searchResult !== -1) {
-            console.log(`Число ${targetNumber} знайдено на позиції ${searchResult}.`);
-        } else {
-            console.log(`Число ${targetNumber} не знайдено в масиві.`);
-        }
-    }
-}
+const result = fibonaci(20)
+console.log ({result})
